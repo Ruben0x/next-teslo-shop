@@ -14,19 +14,14 @@ export const Sidebar = () => {
 
     return (
         <div>
-            {/* Background black */}
 
             {isSideMenuOpen && (
                 <>
-
                     <div className="fixed top-0 left-0 w-screen h-screen z-10 bg-black opacity-30" />
-
                     <div className="fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-xs" onClick={closeMenu} />
                 </>
             )}
-            {/* Blur */}
 
-            {/* Sidemenu */}
             <nav
                 className={clsx(
                     "fixed p-5 right-0 top-0 w-[500px] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300 overflow-scroll",
@@ -45,7 +40,6 @@ export const Sidebar = () => {
                     />
                 </div>
 
-                {/* Menu */}
                 <Link href={"/"} className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
                     <IoPersonAddOutline size={30} />
                     <span className="ml-3 text-xl">Perfil</span>
