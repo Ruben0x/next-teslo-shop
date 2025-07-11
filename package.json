@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "ts-node src/seed/seed-database"
   },
   "dependencies": {
     "@prisma/client": "^6.11.1",
@@ -28,6 +29,7 @@
     "prettier": "^3.6.2",
     "prisma": "^6.11.1",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
