@@ -3,7 +3,10 @@ import './globals.css';
 import { geistMono, geistSans, monserratAlternative } from '@/config';
 
 export const metadata: Metadata = {
-  title: 'Teslo | Shop',
+  title: {
+    template: '%s - Teslo | Shop',
+    default: 'Home - Teslo | Shop'
+  },
   description: 'Una tienda virtual de productos',
 };
 
