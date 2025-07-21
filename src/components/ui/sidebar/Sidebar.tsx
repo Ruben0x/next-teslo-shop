@@ -5,6 +5,7 @@ import Link from "next/link"
 import { IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoPeopleOutline, IoPersonAddOutline, IoSearchOutline, IoShareOutline, IoShirtOutline, IoTicketOutline } from "react-icons/io5"
 import { useUiStore } from "@/store"
 import clsx from 'clsx'
+import { logout } from "@/actions/auth/logout"
 
 export const Sidebar = () => {
 
@@ -40,7 +41,7 @@ export const Sidebar = () => {
                     />
                 </div>
 
-                <Link href={"/"} className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
+                <Link href={"/profile"} onClick={closeMenu} className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
                     <IoPersonAddOutline size={30} />
                     <span className="ml-3 text-xl">Perfil</span>
                 </Link>
@@ -48,14 +49,18 @@ export const Sidebar = () => {
                     <IoTicketOutline size={30} />
                     <span className="ml-3 text-xl">Ordenes</span>
                 </Link>
-                <Link href={"/"} className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
+                <Link href={"/auth/login"} onClick={closeMenu} className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
                     <IoLogInOutline size={30} />
                     <span className="ml-3 text-xl">Ingresar</span>
                 </Link>
-                <Link href={"/"} className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
+                <button className="flex w-full items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all"
+                    onClick={() => {
+                        logout()
+                        closeMenu()
+                    }}>
                     <IoLogOutOutline size={30} />
                     <span className="ml-3 text-xl">Salir</span>
-                </Link>
+                </button>
 
                 <div className="w-full h-px bg-gray-200 my-10" />
                 <s></s>
