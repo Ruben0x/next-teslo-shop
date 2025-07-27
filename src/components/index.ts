@@ -1,3 +1,7 @@
+export { LogOutButton } from './ui/sidebar/LogOutButton';
+
+export { Provider } from './providers/Provider';
+
 export { Footer } from './ui/footer/Footer';
 export { PageNotFound } from './ui/not-found/PageNotFound';
 export { Pagination } from './ui/pagination/Pagination';
@@ -11,3 +15,5 @@ export { SizeSelector } from './product/size-selector/SizeSelector';
 export { StockLabel } from './product/stock-label/StockLabel';
 export { Title } from './ui/title/Title';
 export { TopMenu } from './ui/top-menu/TopMenu';
+
+

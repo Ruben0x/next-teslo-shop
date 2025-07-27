@@ -1,5 +1,5 @@
+import { auth } from "@/auth.config"
 import { Title } from "@/components"
-import { auth } from "../../../../auth.config"
 import { redirect } from "next/navigation"
 
 export default async function ProfilePage() {
@@ -17,6 +17,8 @@ export default async function ProfilePage() {
                     JSON.stringify(session.user, null, 2)
                 }
             </pre>
+
+            <p>{session.user.role}</p>
         </div>
     )
 }

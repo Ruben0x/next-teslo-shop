@@ -10,12 +10,13 @@ import { IoInformationOutline } from "react-icons/io5"
 export const LoginForm = () => {
 
     const [state, dispatch, isPending] = useActionState(authenticate, undefined)
-    const router = useRouter()
+    // const router = useRouter()
 
 
     useEffect(() => {
         if (state === 'Success') {
-            router.replace('/')
+            // router.replace('/')
+            window.location.replace('/')
         }
     }, [state])
 
