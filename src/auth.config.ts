@@ -2,7 +2,7 @@ import NextAuth, { NextAuthConfig } from "next-auth";
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 import bcrypt from "bcryptjs";
-import { prisma } from './lib/prisma';
+import { prisma } from "./lib/prisma";
 
 
 const authenticatedRoutes = [
