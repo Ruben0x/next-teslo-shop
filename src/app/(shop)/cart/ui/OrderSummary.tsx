@@ -22,7 +22,7 @@ export const OrderSummary = () => {
         setLoaded(true)
     }, [getSummaryInformation])
 
-    if (!loaded) { return <p>Loading...</p> }
+    if (!loaded) { return <p>Cargando...</p> }
 
 
 

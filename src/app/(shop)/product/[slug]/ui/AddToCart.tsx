@@ -52,7 +52,7 @@ export const AddToCart = ({ product }: Props) => {
 
             <SizeSelector selectedSize={size} availableSizes={product.sizes} onSizeChanged={setSize} />
 
-            <QuantitySelector quantity={quantity} onChangedQuantity={setQuantity} />
+            <QuantitySelector quantity={quantity} onChangedQuantity={setQuantity} slug={product.slug} />
 
             <button onClick={addToCart} className="btn-primary my-5">Agregar al carrito</button>
         </>)

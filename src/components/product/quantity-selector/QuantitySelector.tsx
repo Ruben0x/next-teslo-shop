@@ -1,25 +1,55 @@
 'use client'
 
+import { getStockBySlug } from "@/actions/products/get-stock-by-slug"
+import { useEffect, useState } from "react"
 import { IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5"
 
 interface Props {
     quantity: number
     onChangedQuantity: (quantity: number) => void
+    slug: string
 }
 
-export const QuantitySelector = ({ quantity, onChangedQuantity }: Props) => {
+export const QuantitySelector = ({ quantity, onChangedQuantity, slug }: Props) => {
+
+    const [stock, setStock] = useState(0)
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+
+        getStock()
+
+    }, [])
+
+    const getStock = async () => {
+        const inStock = await getStockBySlug(slug)
+
+        console.log({ inStock });
+        setStock(inStock)
+        setIsLoading(false)
+    }
+
 
 
     const onValueChanged = (value: number) => {
-        if (quantity + value < 1 || quantity + value > 10) return
+
+        if (quantity + value < 1 || quantity + value > stock) return
 
         onChangedQuantity(quantity + value)
 
     }
 
+    if (isLoading) return <p>Cargando...</p>
+
+
+    if (stock === 0) {
+        return <p className="text-red-600 font-semibold">Sin stock disponible</p>
+    }
+
 
 
     return (
+
         <div className="flex">
             <button onClick={() => onValueChanged(-1)}>
                 <IoRemoveCircleOutline size={30} />

@@ -21,6 +21,7 @@ export const StockLabel = ({ slug }: Props) => {
 
     const getStock = async () => {
         const inStock = await getStockBySlug(slug)
+
         setStock(inStock)
         setIsLoading(false)
     }

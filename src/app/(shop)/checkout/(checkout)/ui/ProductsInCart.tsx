@@ -12,12 +12,14 @@ export const ProductsInCart = () => {
     const productsInCart = useCartStore(state => state.cart)
 
 
+
     useEffect(() => {
         setLoaded(true)
     }, [])
 
 
-    if (!loaded) { return <p>Loading...</p> }
+
+    if (!loaded) { return <p>Cargando...</p> }
     return (
 
         <>

@@ -14,12 +14,13 @@ export const ProductsInCart = () => {
     const productsInCart = useCartStore(state => state.cart)
 
 
+
     useEffect(() => {
         setLoaded(true)
     }, [])
 
 
-    if (!loaded) { return <p>Loading...</p> }
+    if (!loaded) { return <p>Cargando...</p> }
     return (
 
         <>
@@ -45,7 +46,7 @@ export const ProductsInCart = () => {
                             </Link>
 
                             <p>${p.price}</p>
-                            <QuantitySelector quantity={p.quantity} onChangedQuantity={quantity => updateProductQuantity(p, quantity)} />
+                            <QuantitySelector quantity={p.quantity} onChangedQuantity={quantity => updateProductQuantity(p, quantity)} slug={p.slug} />
 
                             <button className="underline mt-3" onClick={() => removeProduct(p)}>
                                 Remover

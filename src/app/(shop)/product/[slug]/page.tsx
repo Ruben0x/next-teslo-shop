@@ -1,6 +1,6 @@
 export const revalidate = 604800 // 7 dias
 
-import { ProductMobileSlideshow, ProductSlideshow, QuantitySelector, SizeSelector, StockLabel } from "@/components";
+import { ProductMobileSlideshow, ProductSlideshow, StockLabel } from "@/components";
 import { notFound } from "next/navigation";
 import { getProductBySlug } from "@/actions";
 import { Metadata, ResolvingMetadata } from "next";

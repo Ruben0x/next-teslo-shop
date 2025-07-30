@@ -1,30 +1,30 @@
 'use client'
 
+import { placeOrder } from "@/actions/order"
 import { useAddressStore, useCartStore } from "@/store"
 import { currencyFormat } from "@/utils"
 import clsx from "clsx"
+import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useState } from "react"
 
 
 export const PlaceOrder = () => {
 
+    const router = useRouter()
+
     const [loaded, setLoaded] = useState(false)
     const [isPlacingOrder, setIsPlacingOrder] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
 
     const address = useAddressStore(state => state.address)
-
     const cart = useCartStore(state => state.cart)
-
+    const clearCart = useCartStore(state => state.clearCart)
     const getSummaryInformation = useCartStore(state => state.getSummaryInformation)
-
-
     const { itemsInCart, subTotal, tax, total } = useMemo(() => getSummaryInformation(), [cart]) // recalcula cuando cart cambia
-
 
 
     useEffect(() => {
         setLoaded(true)
-
     }, [])
 
     const onPlaceOrder = async () => {
@@ -37,14 +37,18 @@ export const PlaceOrder = () => {
             size: product.size
         }))
 
-        console.log({ address, productsToOrder });
-
-        setIsPlacingOrder(false)
+        const resp = await placeOrder(productsToOrder, address)
+        if (!resp.ok) {
+            setIsPlacingOrder(false)
+            setErrorMessage(resp.message!)
+            return
+        }
+        clearCart()
+        router.replace('/orders/' + resp.order?.id)
     }
 
 
     if (!loaded) { return <p>Cargando...</p> }
-
 
     return (
         <div className="bg-white rounded-xl shadow-xl p-7 h-fit">
@@ -87,7 +91,7 @@ export const PlaceOrder = () => {
                     </span>
                 </p>
 
-                {/* <p className="text-red-500">Error de creación</p> */}
+                <p className="text-red-500">{errorMessage}</p>
 
                 <button
                     // href={'/orders/123'}
