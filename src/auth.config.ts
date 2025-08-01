@@ -28,8 +28,10 @@ export const authConfig: NextAuthConfig = {
 
       const isLoggedIn = !!auth?.user;
       const pathname = nextUrl.pathname;
+      const isAdmin = auth?.user.role === 'admin'
 
       const isAuthPage = ['/auth/login', '/auth/new-account'].some(path => pathname.startsWith(path));
+      const isAdminPage = ['/admin'].some(path => pathname.startsWith(path));
       const isCheckout = pathname.startsWith('/checkout');
 
       // Si está logueado y va al login, redirigir al home
@@ -40,6 +42,10 @@ export const authConfig: NextAuthConfig = {
       // Si no está logueado y va a /checkout
       if (isCheckout && !isLoggedIn) {
         return Response.redirect(new URL(`/auth/login?origin=${pathname}`, nextUrl));
+      }
+
+      if (isAdminPage && !isAdmin) {
+        return Response.redirect(new URL('/', nextUrl));
       }
 
       return true;

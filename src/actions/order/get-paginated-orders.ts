@@ -3,9 +3,9 @@
 import { auth } from "@/auth.config"
 import { prisma } from "@/lib/prisma"
 
-export const getOrdersByUser = async () => {
+export const getPaginatedOrders = async () => {
     const session = await auth()
-    if (!session?.user) {
+    if (session?.user.role !== 'admin') {
         return {
             ok: false,
             message: 'Debe de estar autenticado'
@@ -13,8 +13,8 @@ export const getOrdersByUser = async () => {
     }
 
     const orders = await prisma.order.findMany({
-        where: {
-            userId: session.user.id
+        orderBy: {
+            createdAt: 'desc'
         },
         include: {
             OrderAddress: {

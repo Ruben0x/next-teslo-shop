@@ -18,19 +18,10 @@ export const Sidebar = () => {
 
     const { data: session } = useSession()
 
-    const router = useRouter()
 
     const isAuthenticated = !!session?.user
     const isAdmin = session?.user.role === 'admin'
 
-    const handleLogOut = async () => {
-
-        const res = await logout()
-        closeMenu()
-        if (res?.redirectTo) {
-            router.push(res.redirectTo)
-        }
-    }
 
     return (
         <div>
@@ -99,7 +90,7 @@ export const Sidebar = () => {
                                 <IoShirtOutline size={30} />
                                 <span className="ml-3 text-xl">Productos</span>
                             </Link>
-                            <Link href={"/"} className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
+                            <Link href={"/admin/orders"} onClick={() => closeMenu()} className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
                                 <IoTicketOutline size={30} />
                                 <span className="ml-3 text-xl">Ordenes</span>
                             </Link>
