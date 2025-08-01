@@ -1,3 +1,5 @@
+export { PayPalButton } from './paypal/PayPalButton';
+
 export { LogOutButton } from './ui/sidebar/LogOutButton';
 
 export { Provider } from './providers/Provider';

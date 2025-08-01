@@ -45,7 +45,7 @@ export default function () {
 
           {/* Checkout */}
           <PlaceOrder />
-        </div> mnm,
+        </div>
       </div>
     </div >
   );

@@ -7,17 +7,12 @@ import { currencyFormat } from '../../../../../utils/currencyFormat';
 
 export const ProductsInCart = () => {
 
-
     const [loaded, setLoaded] = useState(false)
     const productsInCart = useCartStore(state => state.cart)
-
-
 
     useEffect(() => {
         setLoaded(true)
     }, [])
-
-
 
     if (!loaded) { return <p>Cargando...</p> }
     return (
@@ -36,17 +31,13 @@ export const ProductsInCart = () => {
                             }}
                             alt={p.title}
                             className="mr-5 rounded"
-
                         />
-
                         <div>
                             <span >
                                 <p>{p.size} - {p.title} ({p.quantity})</p>
                             </span>
 
                             <p className="font-bold">{currencyFormat(p.price * p.quantity)}</p>
-
-
                         </div>
                     </div>
                 ))

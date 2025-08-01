@@ -53,7 +53,7 @@ export default async function () {
                   order.isPaid ?
                     <td className="flex items-center text-sm  text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                       <IoCardOutline className="text-green-800" />
-                      <span className='mx-2 text-green-800'>'Pagada'</span>
+                      <span className='mx-2 text-green-800'>Pagada</span>
                     </td>
                     :
                     <td className="flex items-center text-sm  text-gray-900 font-light px-6 py-4 whitespace-nowrap">
