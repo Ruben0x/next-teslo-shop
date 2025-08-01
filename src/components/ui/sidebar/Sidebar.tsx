@@ -2,13 +2,11 @@
 
 
 import Link from "next/link"
-import { IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoPeopleOutline, IoPersonAddOutline, IoSearchOutline, IoShareOutline, IoShirtOutline, IoTicketOutline } from "react-icons/io5"
+import { IoCloseOutline, IoLogInOutline, IoPeopleOutline, IoPersonAddOutline, IoSearchOutline, IoShareOutline, IoShirtOutline, IoTicketOutline } from "react-icons/io5"
 import { useUiStore } from "@/store"
 import clsx from 'clsx'
-import { logout } from "@/actions/auth/logout"
 
 import { useSession } from 'next-auth/react'
-import { useRouter } from "next/navigation"
 import { LogOutButton } from "./LogOutButton"
 
 export const Sidebar = () => {
@@ -17,7 +15,6 @@ export const Sidebar = () => {
     const closeMenu = useUiStore(state => state.closeSideMenu)
 
     const { data: session } = useSession()
-
 
     const isAuthenticated = !!session?.user
     const isAdmin = session?.user.role === 'admin'
@@ -94,7 +91,7 @@ export const Sidebar = () => {
                                 <IoTicketOutline size={30} />
                                 <span className="ml-3 text-xl">Ordenes</span>
                             </Link>
-                            <Link href={"/"} className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
+                            <Link href={"/admin/users"} onClick={() => closeMenu()} className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded transition-all">
                                 <IoPeopleOutline size={30} />
                                 <span className="ml-3 text-xl">Usuarios</span>
                             </Link>
