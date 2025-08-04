@@ -1,15 +1,30 @@
 export const revalidate = 0;
 
 import { getPaginatedOrders } from '@/actions/order';
-import { Title } from '@/components';
+import { Pagination, Title } from '@/components';
 
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { IoCardOutline } from 'react-icons/io5';
 
-export default async function () {
 
-    const { ok, orders = [] } = await getPaginatedOrders()
+interface Props {
+    searchParams: Promise<{
+        page?: string
+    }>
+}
+
+export default async function ({ searchParams }: Props) {
+
+    const params = await searchParams
+
+    const page = params.page ? parseInt(params.page) : 1
+
+
+
+    const { ok, orders = [], totalPages } = await getPaginatedOrders({ page })
+
+
 
     if (!ok) {
         redirect('/auth/login')
@@ -33,6 +48,9 @@ export default async function () {
                             </th>
                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                 Estado
+                            </th>
+                            <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                Fecha
                             </th>
                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                 Opciones
@@ -63,6 +81,9 @@ export default async function () {
                                 }
 
 
+                                <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {order.createdAt.toDateString()}
+                                </td>
                                 <td className="text-sm text-gray-900 font-light px-6 ">
                                     <Link href={`/orders/${order.id}`} className="hover:underline">
                                         Ver orden
@@ -77,6 +98,8 @@ export default async function () {
                     </tbody>
                 </table>
             </div>
+
+            <Pagination totalPages={totalPages} />
         </>
     );
 }

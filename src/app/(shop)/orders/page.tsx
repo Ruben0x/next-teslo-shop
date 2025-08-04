@@ -1,7 +1,7 @@
 export const revalidate = 0;
 
 import { getOrdersByUser } from '@/actions/order';
-import { Title } from '@/components';
+import { Pagination, Title } from '@/components';
 
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -77,6 +77,7 @@ export default async function () {
           </tbody>
         </table>
       </div>
+      <Pagination totalPages={1} />
     </>
   );
 }
