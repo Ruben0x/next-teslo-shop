@@ -5,15 +5,15 @@ import bcrypt from "bcryptjs";
 import { prisma } from "./lib/prisma";
 
 
-const authenticatedRoutes = [
-  "/auth/login",
-  "/auth/new-account"
-]
+// const authenticatedRoutes = [
+//   "/auth/login",
+//   "/auth/new-account"
+// ]
 
-const checkoutAddressRoute = [
-  "/checkout/address",
-  "/checkout/",
-]
+// const checkoutAddressRoute = [
+//   "/checkout/address",
+//   "/checkout/",
+// ]
 
 
 export const authConfig: NextAuthConfig = {
