@@ -1,3 +1,5 @@
+export { ProductImage } from './product/product-image/ProductImage';
+
 export { PayPalButton } from './paypal/PayPalButton';
 
 export { LogOutButton } from './ui/sidebar/LogOutButton';
