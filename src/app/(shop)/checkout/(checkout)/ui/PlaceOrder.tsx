@@ -46,8 +46,7 @@ export const PlaceOrder = () => {
         }
 
         clearCart()
-
-        router.replace('/orders/' + resp.order?.id)
+        router.replace(`/orders/${resp.order?.id}`)
     }
 
     if (!loaded) { return <p>Cargando...</p> }
@@ -104,7 +103,8 @@ export const PlaceOrder = () => {
                             'btn-disabled': isPlacingOrder
 
                         })}>
-                    Colocar orden</button>
+                    Colocar orden
+                </button>
 
             </div>
         </div>

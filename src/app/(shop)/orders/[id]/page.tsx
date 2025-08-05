@@ -1,11 +1,9 @@
-import Image from "next/image";
 
 import { PayPalButton, ProductImage, Title } from "@/components";
 import { getOrderById } from "@/actions/order";
 import { redirect } from "next/navigation";
 import { currencyFormat } from "@/utils";
 import { PayButton } from "./ui/PayButton";
-
 interface Props {
   params: Promise<{
     id: string
@@ -17,7 +15,9 @@ export default async function ({ params }: Props) {
   const { id } = await params
   const { order, ok } = await getOrderById(id)
 
-  if (!ok) { redirect('/') }
+  if (!ok) {
+    redirect('/')
+  }
 
   const address = order?.OrderAddress
 

@@ -64,7 +64,6 @@ export const ProductForm = ({ product, categories }: Props) => {
         if (images) {
             for (let i = 0; i < images.length; i++) {
                 formData.append('images', images[i])
-
             }
         }
 
@@ -76,8 +75,6 @@ export const ProductForm = ({ product, categories }: Props) => {
         }
 
         router.replace(`/admin/product/${updatedProduct?.slug}`)
-
-
     }
 
     const onSizeChange = (size: string) => {

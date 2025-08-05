@@ -10,8 +10,6 @@ interface Props {
     }>
 }
 
-
-
 export default async function ({ params }: Props) {
 
     const { slug } = await params
@@ -36,7 +34,7 @@ export default async function ({ params }: Props) {
 
     return (
         <>
-            <Title title={'Editar producto'} />
+            <Title title={title} />
             <ProductForm product={product ?? {}} categories={categories} />
         </>
     );

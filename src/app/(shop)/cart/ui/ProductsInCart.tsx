@@ -2,8 +2,8 @@
 
 import { ProductImage, QuantitySelector } from "@/components"
 import { useCartStore } from "@/store"
-import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
 export const ProductsInCart = () => {
@@ -13,14 +13,18 @@ export const ProductsInCart = () => {
     const [loaded, setLoaded] = useState(false)
     const productsInCart = useCartStore(state => state.cart)
 
-
+    const router = useRouter()
 
     useEffect(() => {
         setLoaded(true)
-    }, [])
 
+        if (productsInCart.length === 0) {
+            router.replace('/')
+        }
+    }, [productsInCart])
 
     if (!loaded) { return <p>Cargando...</p> }
+
     return (
 
         <>

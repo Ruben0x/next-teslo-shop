@@ -19,7 +19,7 @@ export default function () {
     if (cart.length === 0) {
       router.replace('/');
     }
-  }, [cart]);
+  }, []);
 
   if (cart.length === 0) return null;
 

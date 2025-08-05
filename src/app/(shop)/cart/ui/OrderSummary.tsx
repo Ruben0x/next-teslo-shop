@@ -11,9 +11,7 @@ export const OrderSummary = () => {
 
     const [loaded, setLoaded] = useState(false)
 
-
     const { itemsInCart, subTotal, tax, total } = useMemo(() => getSummaryInformation(), [cart]) // recalcula cuando cart cambia
-
 
     // const { itemsInCart, subTotal, tax, total } = getSummaryInformation()
 

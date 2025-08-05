@@ -17,16 +17,16 @@ export const QuantitySelector = ({ quantity, onChangedQuantity, slug }: Props) =
 
     useEffect(() => {
 
+        const getStock = async () => {
+            const inStock = await getStockBySlug(slug)
+
+            setStock(inStock)
+            setIsLoading(false)
+        }
         getStock()
 
     }, [])
 
-    const getStock = async () => {
-        const inStock = await getStockBySlug(slug)
-
-        setStock(inStock)
-        setIsLoading(false)
-    }
 
 
 
