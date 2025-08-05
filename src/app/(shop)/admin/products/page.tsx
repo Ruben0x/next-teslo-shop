@@ -1,13 +1,10 @@
 export const revalidate = 0;
 
 import { getPaginatedProductsWithImages } from '@/actions';
-import { getPaginatedOrders } from '@/actions/order';
 import { Pagination, ProductImage, Title } from '@/components';
-import Image from 'next/image';
 
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import { IoCardOutline } from 'react-icons/io5';
+
 import { currencyFormat } from '../../../../utils/currencyFormat';
 
 

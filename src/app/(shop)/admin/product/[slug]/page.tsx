@@ -5,12 +5,14 @@ import { ProductForm } from "./ui/ProductForm";
 import { getCategories } from "@/actions/products";
 
 interface Props {
-    params: {
+    params: Promise<{
         slug: string
-    }
+    }>
 }
 
-export default async function ProductPage({ params }: Props) {
+
+
+export default async function ({ params }: Props) {
 
     const { slug } = await params
 
