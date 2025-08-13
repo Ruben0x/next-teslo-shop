@@ -30,6 +30,11 @@ enum Role {
   user
 }
 
+enum PaymentType {
+  webpay
+  paypal
+}
+
 model Category {
   id      String    @id @default(uuid())
   name    String    @unique
@@ -107,13 +112,15 @@ model UserAddress {
 
 // Order de compras
 model Order {
-  id           String    @id @default(uuid())
+  id           String      @id @default(uuid())
+  buyOrder     Int         @unique @default(autoincrement())
   subTotal     Float
   tax          Float
   total        Float
   itemsInOrder Int
-  isPaid       Boolean   @default(false)
+  isPaid       Boolean     @default(false)
   paidAt       DateTime?
+  paymentType  PaymentType @default(webpay)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -43,7 +43,8 @@ export const paypalCheckPayment = async (paypalTransactionId: string) => {
             },
             data: {
                 isPaid: true,
-                paidAt: new Date()
+                paidAt: new Date(),
+                // paymentType: 'paypal'
             }
         })
 

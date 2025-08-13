@@ -4,7 +4,6 @@
 import { auth } from "@/auth.config"
 import type { Address, Size } from "@/interfaces"
 import { prisma } from "@/lib/prisma"
-import { sign } from "crypto"
 
 interface ProductToOrder {
     productId: string

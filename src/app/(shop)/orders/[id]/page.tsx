@@ -1,5 +1,5 @@
 
-import { PayPalButton, ProductImage, Title } from "@/components";
+import { PayPalButton, ProductImage, Title, WebPayButton } from "@/components";
 import { getOrderById } from "@/actions/order";
 import { redirect } from "next/navigation";
 import { currencyFormat } from "@/utils";
@@ -14,6 +14,7 @@ export default async function ({ params }: Props) {
 
   const { id } = await params
   const { order, ok } = await getOrderById(id)
+
 
   if (!ok) {
     redirect('/')
@@ -94,7 +95,11 @@ export default async function ({ params }: Props) {
                 order?.isPaid ?
                   <PayButton isPaid={order?.isPaid} />
                   :
-                  <PayPalButton amount={order!.total} orderId={order!.id} />
+
+                  <>
+                    <PayPalButton amount={order!.total} orderId={order!.id} />
+                    <WebPayButton amount={order!.total} buyOrder={order!.buyOrder.toString()} orderId={order!.id} />
+                  </>
               }
 
             </div>

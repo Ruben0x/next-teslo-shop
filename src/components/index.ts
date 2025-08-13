@@ -1,3 +1,5 @@
+export { WebPayButton } from './transbank/WebPayButton';
+
 export { ProductImage } from './product/product-image/ProductImage';
 
 export { PayPalButton } from './paypal/PayPalButton';
