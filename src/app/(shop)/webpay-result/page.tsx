@@ -1,15 +1,17 @@
 import { redirect } from "next/navigation";
 
-interface SearchParams {
-    token_ws?: string;
-    error?: string;
+interface Props {
+    searchParams: {
+        token_ws?: string;
+        error?: string;
+    };
 }
+
+
 
 export default async function WebpayResultPage({
     searchParams,
-}: {
-    searchParams: SearchParams;
-}) {
+}: Props) {
     const { token_ws, error } = await searchParams;
 
     if (error || !token_ws) {
