@@ -6,13 +6,12 @@ interface Props {
 }
 
 export default async function ProcessingPage({ searchParams }: Props) {
-    const { token_ws } = searchParams;
+    const { token_ws } = await searchParams;
 
     if (!token_ws) {
         redirect("/webpay-result/failure");
     }
 
-    // Llamada real a Webpay para confirmar pago
     const resp = await webpayCheckPayment(token_ws);
 
     if (resp?.ok) {

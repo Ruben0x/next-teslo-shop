@@ -1,8 +1,16 @@
 import { prisma } from "@/lib/prisma";
 
-export default async function SuccessPage({ searchParams }: { searchParams: { token_ws?: string } }) {
+interface Props {
+    searchParams: {
+        token_ws?: string;
+    };
+}
+
+export default async function SuccessPage({ searchParams }: Props) {
+    const { token_ws } = await searchParams;
+
     const order = await prisma.order.findFirst({
-        where: { transactionId: searchParams.token_ws },
+        where: { transactionId: token_ws },
         // cacheStrategy: { ttl: 0 }, // Evitar caché
     });
 
