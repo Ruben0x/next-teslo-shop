@@ -1,9 +1,9 @@
 import { prisma } from "@/lib/prisma";
 
 interface Props {
-    searchParams: {
+    searchParams: Promise<{
         token_ws?: string;
-    };
+    }>;
 }
 
 export default async function SuccessPage({ searchParams }: Props) {
