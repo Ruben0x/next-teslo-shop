@@ -54,6 +54,8 @@ export const getPaginatedOrders = async ({ page = 1, take = 12 }: PaginationOpti
             orders
         }
     } catch (error) {
+
+        console.error(error);
         throw new Error('No se pudo obtener las ordenes')
     }
 
