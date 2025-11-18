@@ -1,6 +1,5 @@
 'use server'
 
-export const runtime = "nodejs";
 import { auth } from "@/auth.config"
 import type { Address, Size } from "@/interfaces"
 import { prisma } from "@/lib/prisma"
