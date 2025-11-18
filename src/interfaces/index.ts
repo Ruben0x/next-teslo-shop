@@ -4,3 +4,4 @@ export * from './country.interface';
 export * from './paypal.interface';
 export * from './product.interface';
 export * from './users.interface';
+export * from './webpay.interface';
