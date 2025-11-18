@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { initialData } from './seed';
 import { countries } from './seed-countries';
 import { prisma } from '../lib/prisma';

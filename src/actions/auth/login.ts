@@ -24,6 +24,7 @@ export async function authenticate(
 
   } catch (error) {
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if ((error as any).type === 'CredentialsSignin') {
 
       return 'CredentialsSignin'

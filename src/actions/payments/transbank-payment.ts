@@ -3,7 +3,7 @@
 import { auth } from "@/auth.config"
 import { WebpayResponse } from "@/interfaces"
 import { prisma } from "@/lib/prisma"
-import { revalidatePath } from "next/cache"
+// import { revalidatePath } from "next/cache"
 
 
 const commerceCode = process.env.Tbk_Api_Key_Id || ''
@@ -134,7 +134,7 @@ export const getWebPayTransactionStatus = async (token: string): Promise<WebpayR
         })
             .then((response) => response.json())
 
-        console.log({ result });
+        // console.log({ result });
 
         return result
 
@@ -149,7 +149,7 @@ export const webpayCheckPayment = async (token: string) => {
 
     const transtactionStatus = await getWebPayTransactionStatus(token)
 
-    console.log({ transtactionStatus });
+    // console.log({ transtactionStatus });
 
     if (transtactionStatus?.vci !== 'TSY') {
         return {

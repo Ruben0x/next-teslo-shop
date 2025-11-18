@@ -141,6 +141,7 @@ export const placeOrder = async (productIds: ProductToOrder[], address: Address)
             order: prismaTx.order,
             prismaTx
         }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         return {
             ok: false,

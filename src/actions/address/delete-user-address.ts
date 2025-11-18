@@ -17,7 +17,7 @@ export const deleteUserAdrress = async (userId: string) => {
             }
         } else {
 
-            const deleted = await prisma.userAddress.delete({
+            await prisma.userAddress.delete({
                 where: { userId }
             })
         }
