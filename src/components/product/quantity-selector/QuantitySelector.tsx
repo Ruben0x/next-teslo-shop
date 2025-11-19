@@ -1,6 +1,6 @@
 'use client'
 
-import { getStockBySlug } from "@/actions/products/get-stock-by-slug"
+// import { getStockBySlug } from "@/actions/products/get-stock-by-slug"
 import { useEffect, useState } from "react"
 import { IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5"
 
