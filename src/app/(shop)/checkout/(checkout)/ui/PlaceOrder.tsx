@@ -27,9 +27,31 @@ export const PlaceOrder = () => {
         setLoaded(true)
     }, [])
 
-    const onPlaceOrder = async () => {
+    // const onPlaceOrder = async () => {
 
+    //     setIsPlacingOrder(true)
+
+    //     const productsToOrder = cart.map(product => ({
+    //         productId: product.id,
+    //         quantity: product.quantity,
+    //         size: product.size
+    //     }))
+
+    //     const resp = await placeOrder(productsToOrder, address)
+
+    //     if (!resp.ok) {
+    //         setIsPlacingOrder(false)
+    //         setErrorMessage(resp.message!)
+    //         return
+    //     }
+
+    //     clearCart()
+    //     router.replace(`/orders/${resp.order?.id}`)
+    // }
+
+    const onPlaceOrder = async () => {
         setIsPlacingOrder(true)
+        setErrorMessage("")
 
         const productsToOrder = cart.map(product => ({
             productId: product.id,
@@ -37,17 +59,27 @@ export const PlaceOrder = () => {
             size: product.size
         }))
 
-        const resp = await placeOrder(productsToOrder, address)
+        const resp = await fetch('/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                productsToOrder,
+                address
+            })
+        })
 
-        if (!resp.ok) {
+        const data = await resp.json()
+
+        if (!data.ok) {
             setIsPlacingOrder(false)
-            setErrorMessage(resp.message!)
+            setErrorMessage(data.message)
             return
         }
 
         clearCart()
-        router.replace(`/orders/${resp.order?.id}`)
+        router.replace(`/orders/${data.order.id}`)
     }
+
 
     if (!loaded) { return <p>Cargando...</p> }
 
