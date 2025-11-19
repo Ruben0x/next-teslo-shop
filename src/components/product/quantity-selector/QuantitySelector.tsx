@@ -15,19 +15,30 @@ export const QuantitySelector = ({ quantity, onChangedQuantity, slug }: Props) =
     const [stock, setStock] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
 
+    // useEffect(() => {
+
+    //     const getStock = async () => {
+    //         const inStock = await getStockBySlug(slug)
+
+    //         console.log({ inStock });
+
+    //         setStock(inStock)
+    //         setIsLoading(false)
+    //     }
+    //     getStock()
+
+    // }, [])
+
     useEffect(() => {
+        const fetchStock = async () => {
+            const res = await fetch(`/api/products/${slug}/stock`);
+            const data = await res.json();
+            setStock(data.stock);
+            setIsLoading(false);
+        };
 
-        const getStock = async () => {
-            const inStock = await getStockBySlug(slug)
-
-            console.log({ inStock });
-
-            setStock(inStock)
-            setIsLoading(false)
-        }
-        getStock()
-
-    }, [])
+        fetchStock();
+    }, [slug]);
 
 
 
