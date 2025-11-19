@@ -27,6 +27,8 @@ export const PlaceOrder = () => {
         setLoaded(true)
     }, [])
 
+    console.log({ address });
+
     // const onPlaceOrder = async () => {
 
     //     setIsPlacingOrder(true)

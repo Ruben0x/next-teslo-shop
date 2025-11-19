@@ -26,6 +26,7 @@ export async function POST(req: Request) {
         const { productsToOrder, address }:
             { productsToOrder: ProductToOrder[]; address: Address } = await req.json();
 
+
         // Obtener los productos
         const products = await prisma.product.findMany({
             where: {
@@ -97,12 +98,24 @@ export async function POST(req: Request) {
             });
 
             // 3. Dirección
-            const { country, ...restAddress } = address;
+
+            const cleanAddress = {
+                firstName: address.firstName,
+                lastName: address.lastName,
+                address: address.address,
+                address2: address.address2 || "",
+                postalCode: address.postalCode,
+                city: address.city,
+                phone: address.phone,
+                countryId: address.country,   // NOTE: tu store usa "country"
+            };
+
+            // const { country, ...restAddress } = address;
 
             const orderAddress = await tx.orderAddress.create({
                 data: {
-                    ...restAddress,
-                    countryId: country,
+                    ...cleanAddress,
+                    // countryId: country,
                     orderId: order.id,
                 },
             });

@@ -12,6 +12,8 @@ interface ProductToOrder {
 
 export const placeOrder = async (productIds: ProductToOrder[], address: Address) => {
 
+
+
     const session = await auth()
 
     const userId = session?.user.id
