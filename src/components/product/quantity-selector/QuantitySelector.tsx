@@ -1,6 +1,6 @@
 'use client'
 
-import { getStockBySlug } from "@/actions/products/get-stock-by-slug"
+// import { getStockBySlug } from "@/actions/products/get-stock-by-slug"
 import { useEffect, useState } from "react"
 import { IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5"
 
@@ -15,17 +15,30 @@ export const QuantitySelector = ({ quantity, onChangedQuantity, slug }: Props) =
     const [stock, setStock] = useState(0)
     const [isLoading, setIsLoading] = useState(true)
 
+    // useEffect(() => {
+
+    //     const getStock = async () => {
+    //         const inStock = await getStockBySlug(slug)
+
+    //         console.log({ inStock });
+
+    //         setStock(inStock)
+    //         setIsLoading(false)
+    //     }
+    //     getStock()
+
+    // }, [])
+
     useEffect(() => {
+        const fetchStock = async () => {
+            const res = await fetch(`/api/products/${slug}/stock`);
+            const data = await res.json();
+            setStock(data.stock);
+            setIsLoading(false);
+        };
 
-        const getStock = async () => {
-            const inStock = await getStockBySlug(slug)
-
-            setStock(inStock)
-            setIsLoading(false)
-        }
-        getStock()
-
-    }, [])
+        fetchStock();
+    }, [slug]);
 
 
 
